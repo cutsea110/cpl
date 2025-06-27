@@ -28,6 +28,8 @@ right object exp(a,b) with curry is
   ev: prod(exp,b) -> a
 end object;
 
+let uncurry(f) = ev.prod(f,I);
+
 let K  = curry(pi1);
 # another style of K combinator
 let K'(c) = c.!;
