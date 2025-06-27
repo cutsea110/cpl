@@ -64,6 +64,7 @@ end object;
 
 let hd = prl(none, some.pi1);
 let tl = pi1.prl(pair(none,some.nil),pair(pi2.pi2,some.cons.pair(pi1,maybe(nil,I).pi2.pi2)));
+let mapl(f) = prl(nil,cons.pair(ev.pair(f.!,pi1),pi2));
 let lenl = prl(0.!,s.pi2);
 let appendl = ev.prod(prl(curry(pi2),curry(cons.pair(pi1.pi1,ev.pair(pi2.pi1,pi2)))),I);
 let suml = prl(0, add.pair(pi1,pi2));
