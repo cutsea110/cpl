@@ -77,6 +77,7 @@ end object;
 
 let hd' = prnel(I, pi1);
 let tl' = either(none.!,some).pi1.prnel(pair(left,left).unit, pair(either(right,right).pi2.pi2, left.cons'.pair(pi1,either(I,I).pi2.pi2)));
+let mapnel(f) = prnel(unit.ev.pair(f.!,I),cons'.pair(ev.pair(f.!,pi1),pi2));
 let lennel = prnel(s.0.!,s.pi2);
 let appendnel = ev.prod(prnel(curry(cons'.pair(pi1,pi2)),curry(cons'.pair(pi1.pi1,ev.pair(pi2.pi1,pi2)))),I);
 let sumnel = prnel(I,add.pair(pi1,pi2));
