@@ -26,7 +26,11 @@ end object;
 let K  = curry(pi1);
 let KI = curry(pi2);
 let B  = curry(ev.pair(pi1,ev.pi2).assocr);
+# another style of B combinator
+let B'(f,g) = ev.pair(f.!,ev.pair(g.!,I));
 let S  = curry(ev.pair(ev.pi1,ev.pi2).distr);
+# another style of S combinator
+let S'(f,g) = ev.pair(ev.pair(f.!,I),ev.pair(g.!,I));
 
 left object bool with if is
   false: 1 -> bool
@@ -90,13 +94,21 @@ let sumnel = prnel(I,add.pair(pi1,pi2));
 # ------------
 # let add3 = curry(add).s.s.s.0
 # let mul2 = curry(mul).s.s.0
-# simp ev.pair(B.pair(add3,mul2),s.s.s.s.0) => B add3 mul2 4 => add3 (mul2 4) => 3 + 8 => 11
+# simp full ev.pair(B.pair(add3,mul2),s.s.s.s.0) => B add3 mul2 4 => add3 (mul2 4) => 3 + 8 => 11
+#
+# B' combinator
+# -------------
+# simp full B'(add3,mul2).s.s.s.s.0 => as same above
 #
 #
 # S combinator
 # ------------
 # let mul2 = curry(mul).s.s.0
-# simp ev.pair(S.pair(cadd, mul2), s.s.s.0) => s cadd mul2 3 => cadd 3 (mul2 3) => 3 + 6 => 9
+# simp full ev.pair(S.pair(cadd, mul2), s.s.s.0) => s cadd mul2 3 => cadd 3 (mul2 3) => 3 + 6 => 9
+#
+# S' combinator
+# -------------
+# simp full S'(cadd,mul2).s.s.s.0 => as same above
 #
 # SKK = I
 # -------
