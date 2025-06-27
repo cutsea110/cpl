@@ -135,3 +135,7 @@ let sumnel = prnel(I,add.pair(pi1,pi2));
 # let cK = curry(K.pi2).0
 # simp ev.pair(S.pair(cK, K), s.s.s.0) => S K K 3 => I 3 => 3
 #
+# S' version
+# ----------
+# simp full S'(cK,cK).s.s.s.0 => as same above
+#
