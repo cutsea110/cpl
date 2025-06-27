@@ -18,6 +18,11 @@ let distl = pair(pair(pi1,pi1.pi2),pair(pi1,pi2.pi2));
 # ((a, b), c) -> ((a, c), (b, c))
 let distr = pair(pair(pi1.pi1,pi2),pair(pi2.pi1,pi2));
 
+left object coprod(a,b) with case is
+  in1: a -> coprod
+  in2: b -> coprod
+end object;
+
 # a^b x b -> a
 right object exp(a,b) with curry is
   ev: prod(exp,b) -> a
@@ -44,11 +49,6 @@ end object;
 left object option(a) with maybe is
   none: 1 -> option
   some: a -> option
-end object;
-
-left object both(a,b) with either is
-  left: a -> both
-  right: b -> both
 end object;
 
 left object nat with prn is
@@ -84,7 +84,7 @@ left object nel(a) with prnel is
 end object;
 
 let hd' = prnel(I, pi1);
-let tl' = either(none.!,some).pi1.prnel(pair(left,left).unit, pair(either(right,right).pi2.pi2, left.cons'.pair(pi1,either(I,I).pi2.pi2)));
+let tl' = case(none.!,some).pi1.prnel(pair(in1,in1).unit, pair(case(in2,in2).pi2.pi2, in1.cons'.pair(pi1,case(I,I).pi2.pi2)));
 let mapnel(f) = prnel(unit.ev.pair(f.!,I),cons'.pair(ev.pair(f.!,pi1),pi2));
 let lennel = prnel(s.0.!,s.pi2);
 let appendnel = ev.prod(prnel(curry(cons'.pair(pi1,pi2)),curry(cons'.pair(pi1.pi1,ev.pair(pi2.pi1,pi2)))),I);
