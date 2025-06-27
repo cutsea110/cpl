@@ -72,8 +72,8 @@ left object list(a) with prl is
   cons: prod(a, list) -> list
 end object;
 
-let hd = prl(none, some.pi1);
-let tl = pi1.prl(pair(none,some.nil),pair(pi2.pi2,some.cons.pair(pi1,maybe(nil,I).pi2.pi2)));
+let hd = prl(in1, in2.pi1);
+let tl = coprod(I,pi2).prl(in1, in2.prod(I,case(nil,cons)));
 let mapl(f) = prl(nil,cons.pair(ev.pair(f.!,pi1),pi2));
 let lenl = prl(0.!,s.pi2);
 let appendl = ev.prod(prl(curry(pi2),curry(cons.pair(pi1.pi1,ev.pair(pi2.pi1,pi2)))),I);
@@ -85,8 +85,8 @@ left object nel(a) with prnel is
   cons': prod(a, nel) -> nel
 end object;
 
-let hd' = prnel(I, pi1);
-let tl' = case(none.!,some).pi1.prnel(pair(in1,in1).unit, pair(case(in2,in2).pi2.pi2, in1.cons'.pair(pi1,case(I,I).pi2.pi2)));
+let hd' = prnel(I,pi1);
+let tl' = coprod(!,pi2).prnel(in1,in2.prod(I,case(unit,cons')));
 let mapnel(f) = prnel(unit.ev.pair(f.!,I),cons'.pair(ev.pair(f.!,pi1),pi2));
 let lennel = prnel(s.0.!,s.pi2);
 let appendnel = ev.prod(prnel(curry(cons'.pair(pi1,pi2)),curry(cons'.pair(pi1.pi1,ev.pair(pi2.pi1,pi2)))),I);
