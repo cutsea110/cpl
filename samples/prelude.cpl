@@ -24,7 +24,11 @@ right object exp(a,b) with curry is
 end object;
 
 let K  = curry(pi1);
+# another style of K combinator
+let K'(c) = c.!;
 let KI = curry(pi2);
+# another style of KI combinator
+let KI'(_) = I;
 let B  = curry(ev.pair(pi1,ev.pi2).assocr);
 # another style of B combinator
 let B'(f,g) = ev.pair(f.!,ev.pair(g.!,I));
@@ -89,6 +93,22 @@ let sumnel = prnel(I,add.pair(pi1,pi2));
 #
 # TEST
 # ====
+#
+# K combinator
+# ------------
+# simp full ev.pair(K.0, s.s.0) => K 0 2 => 0
+#
+# K' combinator
+# -------------
+# simp full K'(0).s.s.0 => as same above
+#
+# KI combinator
+# -------------
+# simp full ev.pair(KI.0, s.s.0) => KI 0 2 => 2
+#
+# KI' combinator
+# --------------
+# simp full KI'(0).s.s.0 => as same above
 #
 # B combinator
 # ------------
