@@ -96,7 +96,7 @@ let sumnel = prnel(I,add.pair(pi1,pi2));
 #
 # K combinator
 # ------------
-# simp full ev.pair(K.0, s.s.0) => K 0 2 => 0
+# simp full ev.pair(K.0,s.s.0) => K 0 2 => 0
 #
 # K' combinator
 # -------------
@@ -104,7 +104,7 @@ let sumnel = prnel(I,add.pair(pi1,pi2));
 #
 # KI combinator
 # -------------
-# simp full ev.pair(KI.0, s.s.0) => KI 0 2 => 2
+# simp full ev.pair(KI.0,s.s.0) => KI 0 2 => 2
 #
 # KI' combinator
 # --------------
@@ -124,7 +124,7 @@ let sumnel = prnel(I,add.pair(pi1,pi2));
 # S combinator
 # ------------
 # let mul2 = curry(mul).s.s.0
-# simp full ev.pair(S.pair(cadd, mul2), s.s.s.0) => s cadd mul2 3 => cadd 3 (mul2 3) => 3 + 6 => 9
+# simp full ev.pair(S.pair(cadd,mul2),s.s.s.0) => s cadd mul2 3 => cadd 3 (mul2 3) => 3 + 6 => 9
 #
 # S' combinator
 # -------------
@@ -133,7 +133,7 @@ let sumnel = prnel(I,add.pair(pi1,pi2));
 # SKK = I
 # -------
 # let cK = curry(K.pi2).0
-# simp ev.pair(S.pair(cK, K), s.s.s.0) => S K K 3 => I 3 => 3
+# simp ev.pair(S.pair(cK,K),s.s.s.0) => S K K 3 => I 3 => 3
 #
 # S' version
 # ----------
