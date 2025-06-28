@@ -54,17 +54,17 @@ left object option(a) with maybe is
 end object;
 
 left object nat with prn is
-  0: 1 -> nat
+  z: 1 -> nat
   s: nat -> nat
 end object;
 
 let add  = ev.prod(prn(curry(pi2),curry(s.ev)),I);
 # curried version (1 is supplied as pi1)
 let cadd = curry(curry(add).pi2).1;
-let mul = ev.prod(prn(curry(0.!),curry(add.pair(ev,pi2))),I);
+let mul = ev.prod(prn(curry(z.!),curry(add.pair(ev,pi2))),I);
 # curried version (1 is supplied as pi1)
 let cmul = curry(curry(mul).pi2).1;
-let fact  = pi1.prn(pair(s.0,0),pair(mul.pair(s.pi2,pi1),s.pi2));
+let fact  = pi1.prn(pair(s.z,z),pair(mul.pair(s.pi2,pi1),s.pi2));
 
 # list
 left object list(a) with prl is
@@ -75,9 +75,9 @@ end object;
 let hd = prl(in1, in2.pi1);
 let tl = coprod(I,pi2).prl(in1, in2.prod(I,case(nil,cons)));
 let mapl(f) = prl(nil,cons.pair(ev.pair(f.!,pi1),pi2));
-let lenl = prl(0.!,s.pi2);
+let lenl = prl(z.!,s.pi2);
 let appendl = ev.prod(prl(curry(pi2),curry(cons.pair(pi1.pi1,ev.pair(pi2.pi1,pi2)))),I);
-let suml = prl(0, add.pair(pi1,pi2));
+let suml = prl(z, add.pair(pi1,pi2));
 
 # non empty list
 left object nel(a) with prnel is
@@ -88,7 +88,7 @@ end object;
 let hd' = prnel(I,pi1);
 let tl' = coprod(!,pi2).prnel(in1,in2.prod(I,case(unit,cons')));
 let mapnel(f) = prnel(unit.ev.pair(f.!,I),cons'.pair(ev.pair(f.!,pi1),pi2));
-let lennel = prnel(s.0.!,s.pi2);
+let lennel = prnel(s.z.!,s.pi2);
 let appendnel = ev.prod(prnel(curry(cons'.pair(pi1,pi2)),curry(cons'.pair(pi1.pi1,ev.pair(pi2.pi1,pi2)))),I);
 let sumnel = prnel(I,add.pair(pi1,pi2));
 
@@ -98,46 +98,46 @@ let sumnel = prnel(I,add.pair(pi1,pi2));
 #
 # K combinator
 # ------------
-# simp full ev.pair(K.0,s.s.0) => K 0 2 => 0
+# simp full ev.pair(K.z,s.s.z) => K 0 2 => 0
 #
 # K' combinator
 # -------------
-# simp full K'(0).s.s.0 => as same above
+# simp full K'(z).s.s.z => as same above
 #
 # KI combinator
 # -------------
-# simp full ev.pair(KI.0,s.s.0) => KI 0 2 => 2
+# simp full ev.pair(KI.z,s.s.z) => KI 0 2 => 2
 #
 # KI' combinator
 # --------------
-# simp full KI'(0).s.s.0 => as same above
+# simp full KI'(z).s.s.z => as same above
 #
 # B combinator
 # ------------
-# let add3 = curry(add).s.s.s.0
-# let mul2 = curry(mul).s.s.0
-# simp full ev.pair(B.pair(add3,mul2),s.s.s.s.0) => B add3 mul2 4 => add3 (mul2 4) => 3 + 8 => 11
+# let add3 = curry(add).s.s.s.z
+# let mul2 = curry(mul).s.s.z
+# simp full ev.pair(B.pair(add3,mul2),s.s.s.s.z) => B add3 mul2 4 => add3 (mul2 4) => 3 + 8 => 11
 #
 # B' combinator
 # -------------
-# simp full B'(add3,mul2).s.s.s.s.0 => as same above
+# simp full B'(add3,mul2).s.s.s.s.z => as same above
 #
 #
 # S combinator
 # ------------
-# let mul2 = curry(mul).s.s.0
-# simp full ev.pair(S.pair(cadd,mul2),s.s.s.0) => s cadd mul2 3 => cadd 3 (mul2 3) => 3 + 6 => 9
+# let mul2 = curry(mul).s.s.z
+# simp full ev.pair(S.pair(cadd,mul2),s.s.s.z) => s cadd mul2 3 => cadd 3 (mul2 3) => 3 + 6 => 9
 #
 # S' combinator
 # -------------
-# simp full S'(cadd,mul2).s.s.s.0 => as same above
+# simp full S'(cadd,mul2).s.s.s.z => as same above
 #
 # SKK = I
 # -------
-# let cK = curry(K.pi2).0
-# simp ev.pair(S.pair(cK,K),s.s.s.0) => S K K 3 => I 3 => 3
+# let cK = curry(K.pi2).z
+# simp ev.pair(S.pair(cK,K),s.s.s.z) => S K K 3 => I 3 => 3
 #
 # S' version
 # ----------
-# simp full S'(cK,cK).s.s.s.0 => as same above
+# simp full S'(cK,cK).s.s.s.z => as same above
 #
