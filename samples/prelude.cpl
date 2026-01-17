@@ -103,8 +103,7 @@ let toMaybe=case(none, some);
 let histo(phi)=hd'.prn(unit.phi.none,cons'.pair(phi.some,I));
 
 # fib with tabulation via histo on option(nel nat)
-let fib_phi=maybe(z,add.pair(hd',maybe(s.z,hd').toMaybe.tl'));
-let fib=histo(fib_phi);
+let fib=histo(maybe(z,add.pair(hd',maybe(s.z,hd').toMaybe.tl')));
 
 #
 # TEST
