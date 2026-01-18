@@ -92,18 +92,18 @@ let lennel = prnel(s.z.!,s.pi2);
 let appendnel = ev.prod(prnel(curry(cons'.pair(pi1,pi2)),curry(cons'.pair(pi1.pi1,ev.pair(pi2.pi1,pi2)))),I);
 let sumnel = prnel(I,add.pair(pi1,pi2));
 
-# coprod(1,a) -> option(a)
-let toMaybe=case(none, some);
+# coprod(1,a) -> maybe(a)
+let toMaybe = case(none, some);
 
-# histomorphism on Maybe (option) functor for nat
+# histomorphism on mybe functor for nat
 # histo phi = hd' . u
 #   where u Z     = unit (phi none)
 #         u (S n) = cons' (phi (some n')) n'
 #           where n' = u n
-let histo(phi)=hd'.prn(unit.phi.none,cons'.pair(phi.some,I));
+let histo(phi) = hd'.prn(unit.phi.none,cons'.pair(phi.some,I));
 
 # fib with tabulation via histo on option(nel nat)
-let fib=histo(maybe(z,add.pair(hd',maybe(s.z,hd').toMaybe.tl')));
+let fib = histo(maybe(z,add.pair(hd',maybe(s.z,hd').toMaybe.tl')));
 
 #
 # TEST
