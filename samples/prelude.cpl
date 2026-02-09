@@ -66,6 +66,22 @@ let mul = ev.prod(prn(curry(z.!),curry(add.pair(ev,pi2))),I);
 let cmul = curry(curry(mul).pi2).1;
 let fact  = pi1.prn(pair(s.z,z),pair(mul.pair(s.pi2,pi1),s.pi2));
 
+right object conat with unfold is
+  out: conat -> coprod(1, conat)
+end object;
+
+let coZ = unfold(in1) : 1 -> conat;
+let coS = unfold(in2) : conat -> conat;
+
+let coomega = unfold(in2.I) : 1 -> conat;
+# f0: 1 -> *a
+# f1: *a -> *a
+# embed.z = coZ
+# embed.s = coS.embed
+let embed = pr(coZ, coS) : nat -> conat;
+# anamorphism (coiteration)
+let unfoldn(step) = unfold(step) : *a -> conat;
+
 # list
 left object list(a) with prl is
   nil: 1 -> list
