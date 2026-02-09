@@ -78,7 +78,7 @@ let coomega = unfold(in2.I) : 1 -> conat;
 # f1: *a -> *a
 # embed.z = coZ
 # embed.s = coS.embed
-let embed = pr(coZ, coS) : nat -> conat;
+let embed = prn(coZ, coS) : nat -> conat;
 # anamorphism (coiteration)
 let unfoldn(step) = unfold(step) : *a -> conat;
 
