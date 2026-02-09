@@ -187,6 +187,7 @@ left object char with chrcase is
 end object;
 
 let hello = cons.pair('H',cons.pair('e',cons.pair('l',cons.pair('l',cons.pair('o',nil)))));
+let world = cons.pair('W',cons.pair('o',cons.pair('r',cons.pair('l',cons.pair('d',nil)))));
 
 #
 # TEST
