@@ -186,6 +186,8 @@ left object char with chrcase is
   'Z': 1 -> char
 end object;
 
+let hello = cons.pair('H',cons.pair('e',cons.pair('l',cons.pair('l',cons.pair('o',nil)))));
+
 #
 # TEST
 # ====
